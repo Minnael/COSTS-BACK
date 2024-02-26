@@ -11,4 +11,10 @@ async function criarProjeto(request, response){
    return response.json(novoProjeto)
 }
 
-export {buscarProjeto, criarProjeto} 
+async function deletarProjeto(request, response){
+   const id = request.params.id
+   await Projeto.findByIdAndDelete({_id: id})
+   return response.status(200).json({response: "Usuario Deletado!"})
+}
+
+export {buscarProjeto, criarProjeto, deletarProjeto} 
